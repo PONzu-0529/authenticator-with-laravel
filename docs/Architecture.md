@@ -13,27 +13,43 @@
 ### Files
 
 ```
-.devcontainer
+authenticator
+|
++-- .devcontainer
 |   |
 |   +-- devcontainer.json
 |
 +-- server
+|   |
+|   +-- Laravel Code
 |
 +-- client
-|
-+-- docs
 |   |
-|   +-- assets
+|   +-- Vue Code
+|
++-- build
+|   |
+|   +-- server
 |   |   |
-|   |   +-- *.svg
+|   |   +-- Dockerfile
 |   |
-|   +-- *.md
-|
-+-- .env
-|
-+-- docker-compoer.yml
+|   +-- client
+|   |   |
+|   |   +-- Docekrfile
+|   |
+|   +-- .env
+|   |
+|   +-- docker-compoer.yml
 |
 +-- server.code-workspace   // VSCode Workspace for Server
 |
 +-- client.code-workspace   // VSCode Workspace for Client
+|
++-- docs
+    |
+    +-- assets
+    |   |
+    |   +-- *.svg
+    |
+    +-- *.md
 ```
