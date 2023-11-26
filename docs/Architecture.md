@@ -2,4 +2,4 @@
 
 ## About
 
-![](assets/about.svg)
+![](assets/about.drawio.svg)
