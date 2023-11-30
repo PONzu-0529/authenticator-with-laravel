@@ -1,0 +1,65 @@
+version: "3"
+services:
+  server:
+    build:
+      context: "${LOCAL_HOST_PATH}/build/server"
+      dockerfile: Dockerfile
+      args:
+        - USERNAME=${USERNAME}
+    container_name: "${PROJECT_NAME}-server"
+    env_file: .env
+    environment:
+      TZ: Asia/Tokyo
+    ports:
+      - "80:80"
+      - "8080:8080"
+    tty: true
+    user: "${USERNAME}:${USERNAME}"
+    volumes:
+      - ${LOCAL_HOST_PATH}:/app
+      - /var/www
+      - /app/node_modules
+      - /app/vendor
+    working_dir: "/app"
+  # design:
+  #   image: httpd
+  #   ports:
+  #     - "5000:80"
+  #   volumes:
+  #     - ${LOCAL_HOST_PATH}/design/:/usr/local/apache2/htdocs/
+  # mariadb:
+  #   image: mariadb:10.5
+  #   container_name: "${PROJECT_NAME}_mariadb"
+  #   environment:
+  #     MYSQL_DATABASE: ${DB_NAME}
+  #     MYSQL_USER: ${DB_USER}
+  #     MYSQL_PASSWORD: ${DB_PASSWORD}
+  #     MYSQL_ROOT_PASSWORD: ${DB_ROOT_PASSWORD}
+  #     TZ: Asia/Tokyo
+  #   ports:
+  #     - "3306:3306"
+  # phpmyadmin:
+  #   image: phpmyadmin/phpmyadmin:4.7
+  #   container_name: "${PROJECT_NAME}_phpmyadmin"
+  #   environment:
+  #     PMA_HOST: mariadb
+  #     PMA_USER: ${DB_USER}
+  #     PMA_PASSWORD: ${DB_PASSWORD}
+  #   ports:
+  #     - "8888:80"
+  # chrome:
+  #   image: selenium/standalone-chrome:4.0.0-rc-1-prerelease-20210713
+  #   container_name: "${PROJECT_NAME}_chrome"
+  #   shm_size: 2gb
+  #   ports:
+  #     - "4444:4444"
+  #     - "7900:7900"
+  # selenium:
+  #   build:
+  #     context: "${LOCAL_HOST_PATH}/selenium"
+  #     dockerfile: Dockerfile
+  #     args:
+  #       - SELENIUM_SERVER_PORT=${SELENIUM_SERVER_PORT}
+  #   container_name: "${PROJECT_NAME}_selenium"
+  #   env_file: .env
+  #   tty: true
